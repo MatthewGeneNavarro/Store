@@ -26,11 +26,9 @@
                 <ColumnDefinition Width="Auto"/>
             
             </Grid.ColumnDefinitions>
-            <ComboBox x:Name="ItemChoices" Grid.Column="2" FontSize="24" Height="Auto" Width="Auto">
-                <ComboBoxItem>HP Envy x360</ComboBoxItem>
-                <ComboBoxItem>Lenovo ThinkPad X1 Carbon</ComboBoxItem>
-                <ComboBoxItem>Dell XPS 13</ComboBoxItem>
-            </ComboBox>
+            <ComboBox x:Name="ItemChoices" Grid.Column="2" FontSize="24" Height="Auto" Width="Auto"/>
+
+
         </Grid>
 
 

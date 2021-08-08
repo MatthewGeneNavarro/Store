@@ -25,7 +25,7 @@ namespace Store
     {
         public MainWindow()
         {
-            //db();
+            db();
             InitializeComponent();
             navFrame.NavigationService.Navigate(new MainPage());
         }

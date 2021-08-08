@@ -26,10 +26,20 @@ namespace Store.Pages
         public Menu()
         {
             InitializeComponent();
-            
+            syncDB();
         }
 
-        
+        private void syncDB()
+        {
+            using var dbContext = new SqliteDBContext();
+            var items = dbContext.Items.ToList<Product>();
+            if(items is not null)
+            {
+                ItemChoices.ItemsSource = items.Select(c => c.ProductName);
+            }
+
+        }
+
         // Navigates to differet pages in the WPF app
         private void BackToMain(object sender, RoutedEventArgs e)
         {
@@ -39,10 +49,19 @@ namespace Store.Pages
 
         private void AddItem(object sender, RoutedEventArgs e)
         {
-            //using (var context = new SqliteDBContext())
-            //{
-            //    var x = new Item {  }
-            //}
+            if(ItemChoices.SelectedIndex is not -1)
+            {
+                using var dbContext = new SqliteDBContext();
+                ProductQuantity cart = new ProductQuantity();
+                cart.product.Add(dbContext.Items.Where(c => c.ProductName == ItemChoices.Text).First());
+
+                
+
+
+                dbContext.SaveChanges();
+                ItemChoices.SelectedIndex = -1;
+                NavigationService.Navigate(new MainPage());
+            }
         }
     }
 }

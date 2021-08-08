@@ -8,13 +8,14 @@ namespace Store.Models
 {
     class Product
     {
-        public int Id { get; set; }
+        public int ProductId { get; set; }
         public string ProductName { get; set; }
         public double ProductPrice { get; set; }
         public int ProductAmount { get; set; }
 
-        // foreignkey of ProductQuantityTable
         public int ProductQuantityId { get; set; }
-        public ProductQuantity ProductInCart { get; set; }
+        public ProductQuantity ProductQuantity { get; set; }
+
+
     }
 }

@@ -10,12 +10,10 @@ namespace Store.Models
     {
         //Going to act as a cart
         //This table will contain qualities of the Product table in SQL behavior
-        //
-        public int ProductQuantityId { get; set; }
 
-
-        //public int ProductQuantityAvailable { get; set; }
+        public int ProductQuantityId { get; set; }      
         public int ProductId { get; set; }
-        //public List<Product> ProductsInStock { get; set; }
+        public List<Product> product { get; set; }
+
     }
 }
