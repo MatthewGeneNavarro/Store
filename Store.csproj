@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.8" />
-    <PackageReference Include="shortid" Version="3.0.1" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Store.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,7 +25,11 @@ namespace Store.Pages
         {
             InitializeComponent();
         }
-
+        public void db()
+        {
+            using var dbContext = new SqliteDBContext();
+            dbContext.Database.EnsureCreated();
+        }
 
         // Navigates to different pages in the WPF app
         //goes to the shop, adds items to cart

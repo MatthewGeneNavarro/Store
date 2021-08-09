@@ -19,8 +19,9 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="1" Grid.Column="2" ShowGridLines="True">
+        <Grid Grid.Row="0" Grid.Column="2" ShowGridLines="True">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="Auto"/>
@@ -33,13 +34,20 @@
 
 
 
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2" Grid.Row="1" FontSize="32">Inventory </TextBlock>
-        <TextBox x:Name="DesiredAmount" Text="Enter quantity of item here" Grid.Row="2" Grid.ColumnSpan="2"
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2" Grid.Row="0" FontSize="32">Inventory </TextBlock>
+        <TextBox x:Name="DesiredAmount" Text="Enter quantity of item here" Grid.Row="1" Grid.ColumnSpan="2"
                  HorizontalAlignment="Center" VerticalAlignment="Center"
                  FontSize="32" Background="White"/>
-        
-        <Button Click="AddItem" Grid.Row="3" Grid.ColumnSpan="2" FontSize="32">Add Items</Button>
-        <Button Click="BackToMain" Grid.ColumnSpan="2" Grid.Row="4" FontSize="32">Main Menu</Button>
+
+
+        <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <ComboBox SelectionChanged="SyncDG" x:Name="catMCB" FontSize="36" VerticalAlignment="Center"/>
+            <DataGrid x:Name="MainDG"/>
+        </StackPanel>
+
+
+        <Button Click="AddItem" Grid.Row="4" Grid.ColumnSpan="2" FontSize="32">Add Items</Button>
+        <Button Click="BackToMain" Grid.ColumnSpan="2" Grid.Row="5" FontSize="32">Main Menu</Button>
 
     </Grid>
 

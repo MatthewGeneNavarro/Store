@@ -30,24 +30,49 @@ namespace Store.Pages
         {
             NavigationService.Navigate(new MainPage());
         }
-
+        //C in CRUD
+        // Create items in Database
         private void AddToDatabase(object sender, RoutedEventArgs e)
         {
 
             if (NameOfItem.Text is not null && AmountOfItem.Text is not null && PriceOfItem.Text is not null)
             {
+
+                var newEntry = new Product
+                {
+                    ProductName = NameOfItem.Text,
+                    ProductPrice = Convert.ToDouble(PriceOfItem.Text),
+                    ProductAmount = Convert.ToInt32(AmountOfItem.Text)
+                };
+
                 using var dbContext = new SqliteDBContext();
-                dbContext.Items.Add(new() {ProductName = NameOfItem.Text, ProductPrice = Convert.ToDouble(PriceOfItem.Text), ProductAmount = Convert.ToInt32(AmountOfItem.Text) });
+                dbContext.Add(newEntry);
                 dbContext.SaveChanges();
                 NameOfItem.Text = "";
                 PriceOfItem.Text = "";
                 AmountOfItem.Text = "";
                 NavigationService.Navigate(new MainPage());
-                //dbContext.
+
             }
+
             else
             {
                 MessageBox.Show("Please enter all three values.");
+            }
+        }
+        
+        // D in CRUD
+        //Deletes items in Database
+        private void DeleteItem(object sender, RoutedEventArgs e)
+        {
+
+            if (RemoveItem.Text is not null)
+            {
+                using var dbContext = new SqliteDBContext();
+                var rmItemFromInventory = dbContext.Items.First(c => c.ProductName == RemoveItem.Text); 
+                dbContext.SaveChanges();
+                RemoveItem.Text = "";
+                NavigationService.Navigate(new MainPage());
             }
         }
     }
